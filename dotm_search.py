@@ -4,21 +4,16 @@ Given a directory path, this searches all files in the path for a given text str
 within the 'word/document.xml' section of a MSWord .dotm file.
 """
 
-# Your awesome code begins here!
-
 import zipfile
 import sys
 import os
 import glob
-
-
 
 def check_text(text, directory):
     print "Searching directory ./dotm_files for text " + text
     os.chdir(directory)
     filenames = glob.glob('*.dotm')
     matches = 0
-    
     
     for file in filenames:     
         zf = zipfile.ZipFile(file, 'r')
@@ -36,6 +31,7 @@ def check_text(text, directory):
         if text in data:
             matches += 1
             print "Match found in file " + directory + "/" + file
+            
             for index, character in enumerate(data):
                 if index in plus_range:
                     plus40chars += character
@@ -54,13 +50,14 @@ def check_text(text, directory):
 
 
 def main():
-    if len(sys.argv) != 3:
-        sys.exit(1)
-
-    return check_text(sys.argv[1], sys.argv[2])
     
-    
+    if len(sys.argv) == 4:
+        return check_text(sys.argv[1], sys.argv[3])
+    elif len(sys.argv) == 2:
+        return check_text(sys.argv[1], './')
+    else: sys.exit(0)
 
+    
 if __name__ == '__main__':
     main()
 
