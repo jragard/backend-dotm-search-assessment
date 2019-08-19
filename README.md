@@ -1,5 +1,7 @@
 # DOTM search
 
+Committing for test purposes
+
 ## Skills Required
  - [Google-fu](https://english.stackexchange.com/questions/19967/what-does-google-fu-mean)
  - File I/O
